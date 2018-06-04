@@ -16,7 +16,7 @@ smart_digits_format(x, ...)
 }
 \value{
 \code{smart_digits} returns a character vector.
-\code{smart_digits_format} returns a function with a single argument \code{x}, a numeric vector, that returns a charactger vector.
+\code{smart_digits_format} returns a function with a single argument \code{x}, a numeric vector, that returns a character vector.
 }
 \description{
 Format numbers with automatic number of digits
