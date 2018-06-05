@@ -1,0 +1,49 @@
+---
+title: "The `ggtufte` Package"
+author: "Jeffrey Arnold"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+# Introduction
+
+```{r}
+library("ggplot2")
+library("ggtufte")
+extrafont::loadfonts()
+```
+
+## Minimal Bar Plot
+
+
+
+## Minimal Scatterplot with Range-Frame
+
+
+
+## Typography
+
+
+## References
+
+- [Tufte Handout](https://rstudio.github.io/tufte/) R markdown format
+- [tufte-css](https://github.com/edwardtufte/tufte-css)
+- [tufte-latex](https://github.com/tufte-latex/tufte-latex)

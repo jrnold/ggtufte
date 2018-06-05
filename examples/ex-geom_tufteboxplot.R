@@ -1,4 +1,6 @@
 library("ggplot2")
+library("extrafont")
+extrafont::loadfonts()
 
 p <- ggplot(mtcars, aes(factor(cyl), mpg))
 # with a point for the median and lines for whiskers

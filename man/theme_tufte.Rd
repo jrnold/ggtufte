@@ -4,7 +4,9 @@
 \alias{theme_tufte}
 \title{Tufte Maximal Data, Minimal Ink Theme}
 \usage{
-theme_tufte(base_size = 11, base_family = "serif", ticks = TRUE)
+theme_tufte(base_size = 11,
+  base_family = extrafont::choose_font(ggtufte::tufte_theme_fonts),
+  ticks = TRUE)
 }
 \arguments{
 \item{base_size}{base font size}
@@ -30,6 +32,8 @@ installed on your system, then you can use them with the package
 }
 \examples{
 library("ggplot2")
+library("extrafont")
+extrafont::loadfonts()
 
 p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point() +

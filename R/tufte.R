@@ -24,8 +24,9 @@
 #' @example examples/ex-theme_tufte.R
 #' @export
 #' @importFrom ggplot2 theme element_blank theme_bw
-theme_tufte <- function(base_size = 11, base_family = "serif", ticks = TRUE) {
-  ## TODO: start with theme_minimal
+theme_tufte <- function(base_size = 11,
+                        base_family = extrafont::choose_font(ggtufte::tufte_theme_fonts),
+                        ticks = TRUE) {
   ret <- theme_bw(base_family = base_family, base_size = base_size) +
     theme(legend.background = element_blank(),
           legend.key = element_blank(),
@@ -40,3 +41,21 @@ theme_tufte <- function(base_size = 11, base_family = "serif", ticks = TRUE) {
   }
   ret
 }
+
+#' Font options to use with the Tufte Theme
+#'
+#' List of font or font-families to use with \code{theme_tufte}.
+#' It starts with the preferred ETBembo font used in Tufte's book along with
+#' fallback options.
+#'
+#' This list is derived from the list of fonts used in
+#' [https://github.com/edwardtufte/tufte-css](tufte-css)
+#'
+#' @md
+#' @format A character vector.
+#' @export
+#' @examples
+#' tufte_theme_fonts
+tufte_theme_fonts <-
+c("ETBembo RomanLF", "Palatino", "Palatino Linotype", "Palatino LT STD",
+  "Book Antiqua", "Georgia", "serif")

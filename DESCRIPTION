@@ -5,6 +5,8 @@ Version: 0.0.1
 Description: Geoms, a theme, and utilities inspired by Tufte's work.
     This package includes a minimal-ink theme, Tufte's boxplot variant,
     and axis lines with ranges determined by the data.
+    A copy of the 'ET Book' font <https://github.com/edwardtufte/et-book> 
+    is also included.
 URL: http://github.com/jrnold/ggtufte
 BugReports: https://github.com/jrnold/ggtufte
 License: MIT + file LICENSE
@@ -13,21 +15,26 @@ LazyData: true
 Depends:
     R (>= 3.2.0)
 Imports:
-  ggplot2 (>= 2.2.1),
-  extrafont
+    ggplot2 (>= 2.2.1),
+    extrafont
 Suggests:
     spelling,
-  tufte,
+    tufte,
     knitr,
     rmarkdown,
     testthat,
     covr
 Authors@R: c(person("Jeffrey", "Arnold", role = c("aut", "cre"), email = "jeffrey.arnold@gmail.com",
                     comment = c(ORCID = "0000-0001-9953-3904")),
-    person("Hadley", "Wickham", role = c("ctb"),
-    comment = "Code from the ggplot2 package."),
-    person("Justin",  "Talbot", role = "ctb",
-    comment = "Code from the labeling package"))
+             person("Hadley", "Wickham", role = c("ctb"),
+               comment = "Code from the ggplot2 package."),
+             person("Justin",  "Talbot", role = "ctb",
+               comment = "Code from the labeling package"),
+             person("Dimitry", "Krasny", comment = "ET Book Font", role = c("cph")),
+             person("Bonnie", "Scranton", comment = "ET Book Font", role = c("cph")),
+             person("Edward", "Tufte", comment = "ET Book Font", role = c("cph")),
+             person("Bob", "Rudis", role = "ctb",
+               comment = "Code from hrbrthemes package."))
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
 Language: en-US
