@@ -8,6 +8,14 @@
 #'
 #' @inheritParams ggplot2::theme_grey
 #' @param ticks \code{logical} Show axis ticks?
+#' @param sans_title If \code{TRUE}, then use a sans serif font for
+#'   \code{plot.title} and \code{plot.subtitle}.
+#'   The default is to search for a Gill Sans font, followed by Lato (distributed with \pkg{ggtufte}),
+#'   followed by the default device "sans" font.
+#'   If \code{FALSE}, then use an italic serif font.
+#'   This will use ETBembo DisplayItalic
+#'   (distributed with \pkg{ggtufte}) if installed, otherwise it will
+#'   use default Palatino font.
 #'
 #' @references Tufte, Edward R. (2001) The Visual Display of
 #' Quantitative Information, Chapter 6.

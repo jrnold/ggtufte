@@ -1,4 +1,4 @@
-#' Import ET Book font for use in plots
+#' Import ETBembo and Lato fonts for use in plots
 #'
 #' There is an option `ggtufte.loadfonts` which -- if set to `TRUE` -- will
 #' call `extrafont::loadfonts()` to register non-core fonts with R PDF & PostScript
@@ -77,7 +77,7 @@ get_etbembo <- function(italic = FALSE) {
 # Gill Sans type font
 get_gill_sans <- function() {
   fallbacks <- c("Gill Sans Nova", "Gill Sans MT", "Gill Sans Std",
-                 "Lato", "sans")
+                 "Gillius ADF No 2", "Gillius ADF", "Lato", "sans")
   fontlist <- extrafont::fonts()
   for (font in fallbacks) {
     if (font %in% fontlist) {

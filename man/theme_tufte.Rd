@@ -4,12 +4,21 @@
 \alias{theme_tufte}
 \title{Tufte's Maximal Data, Minimal Ink Theme}
 \usage{
-theme_tufte(base_size = 11, ticks = TRUE)
+theme_tufte(base_size = 11, ticks = TRUE, sans_title = FALSE)
 }
 \arguments{
 \item{base_size}{base font size}
 
 \item{ticks}{\code{logical} Show axis ticks?}
+
+\item{sans_title}{If \code{TRUE}, then use a sans serif font for
+\code{plot.title} and \code{plot.subtitle}.
+The default is to search for a Gill Sans font, followed by Lato (distributed with \pkg{ggtufte}),
+followed by the default device "sans" font.
+If \code{FALSE}, then use an italic serif font.
+This will use ETBembo DisplayItalic
+(distributed with \pkg{ggtufte}) if installed, otherwise it will
+use default Palatino font.}
 }
 \description{
 Theme based on Chapter 6 'Data-Ink Maximization and Graphical
@@ -21,7 +30,8 @@ well in combination with \code{\link{geom_rug}} or
 \examples{
 library("ggplot2")
 library("extrafont")
-extrafont::loadfonts()
+extrafont::loadfonts(quiet = TRUE)
+extrafont::loadfonts("postscript", quiet = TRUE)
 
 p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point() +

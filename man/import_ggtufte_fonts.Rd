@@ -2,7 +2,7 @@
 % Please edit documentation in R/et-book.R
 \name{import_ggtufte_fonts}
 \alias{import_ggtufte_fonts}
-\title{Import ET Book font for use in plots}
+\title{Import ETBembo and Lato fonts for use in plots}
 \source{
 \url{https://github.com/edwardtufte/et-book}
 }

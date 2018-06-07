@@ -63,7 +63,7 @@ legibility <- function(lmin, lmax, lstep) {
 #'   a vector of data, which returns the vector of axis label locations.
 #' @references
 #' Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis 2010.
-#' @author Justin Talbot \email{jtalbot@@stanford.edu}, Jeffrey B. Arnold, Baptiste Auguie
+#' @author Justin Talbot, Jeffrey B. Arnold, Baptiste Auguie
 #' @rdname range_breaks
 #' @export
 range_breaks <- function(x,
@@ -142,56 +142,4 @@ range_breaks <- function(x,
     }
     breaks
   }
-}
-
-# from scales package
-zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
-  if (length(x) == 1)
-    return(TRUE)
-  if (length(x) != 2)
-    stop("x must be length 1 or 2")
-  if (any(is.na(x)))
-    return(NA)
-  if (x[1] == x[2])
-    return(TRUE)
-  if (all(is.infinite(x)))
-    return(FALSE)
-  m <- min(abs(x))
-  if (m == 0)
-    return(FALSE)
-  abs((x[1] - x[2]) / m) < tol
-}
-
-# from scales package
-precision <- function(x) {
-  rng <- range(x, na.rm = TRUE)
-  span <- if (zero_range(rng))
-    abs(rng[1])
-  else diff(rng)
-  floor(log10(span))
-}
-
-#' Format numbers with automatic number of digits
-#'
-#' @param x A numeric vector to format
-#' @param ... Parameters passed to \code{\link{format}}
-#'
-#' @references Josh O'Brien, \url{http://stackoverflow.com/questions/23169938/select-accuracy-to-display-additional-axis-breaks/23171858#23171858}.
-#' @author Josh O'Brien, Baptise Auguie, Jeffrey B. Arnold
-#' @return \code{smart_digits} returns a character vector.
-#' \code{smart_digits_format} returns a function with a single argument \code{x}, a numeric vector, that returns a character vector.
-#'
-#' @rdname smart_digits
-#' @noRd
-smart_digits <- function(x, ...) {
-  if (length(x) == 0)
-    return(character())
-  accuracy <- precision(x)
-  x <- round(x, -accuracy)
-  format(x, ...)
-}
-
-#' @noRd
-smart_digits_format <- function(x, ...) {
-  function(x) smart_digits(x, ...)
 }

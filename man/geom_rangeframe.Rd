@@ -75,7 +75,8 @@ Axis lines which extend to the maximum and minimum of the plotted data.
 \examples{
 library("ggplot2")
 library("extrafont")
-extrafont::loadfonts()
+extrafont::loadfonts(quiet = TRUE)
+extrafont::loadfonts("postscript", quiet = TRUE)
 
 ggplot(mtcars, aes(wt, mpg)) +
  geom_point() +

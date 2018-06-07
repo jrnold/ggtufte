@@ -6,25 +6,6 @@
 #' It visualises five summary statistics: the median, two hinges (25\% and 75\% quartiles)
 #' and two whiskers (minimum, maximum).
 #'
-#' The statistics are different than \code{\link{geom_boxplot}}.
-#'
-#' @section Aesthetics:
-#' \itemize{
-#'   \item x (required) x coordinate of the line
-#'   \item upper
-#'   \item lower
-#'   \item middle
-#'   \item ymin
-#'   \item ymax
-#'   \item colour (required)
-#'   \item size thickness of the lines
-#'   \item linetype types of the lines
-#'   \item width
-#'   \item shape shape of the point(s)
-#'   \item fill fill of the point(s)
-#'   \item alpha transparency
-#' }
-#'
 #' @references Tufte, Edward R. (2001) The Visual Display of
 #'   Quantitative Information, Chapter 6.
 #'

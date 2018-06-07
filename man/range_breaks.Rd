@@ -29,5 +29,5 @@ Then, the minimum and maximum labels are moved to the minimum and maximum of the
 Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis 2010.
 }
 \author{
-Justin Talbot \email{jtalbot@stanford.edu}, Jeffrey B. Arnold, Baptiste Auguie
+Justin Talbot, Jeffrey B. Arnold, Baptiste Auguie
 }

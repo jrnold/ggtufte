@@ -1,6 +1,7 @@
 library("ggplot2")
 library("extrafont")
-extrafont::loadfonts()
+extrafont::loadfonts(quiet = TRUE)
+extrafont::loadfonts("postscript", quiet = TRUE)
 
 p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point() +
