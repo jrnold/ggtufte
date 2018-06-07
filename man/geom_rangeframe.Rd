@@ -87,6 +87,6 @@ Tufte, Edward R. (2001) The Visual Display of
 Quantitative Information, Chapter 6.
 }
 \seealso{
-Other geom tufte: \code{\link{geom_tufteboxplot}}
+Other geom tufte: \code{\link{geom_quartileplot}}
 }
 \keyword{datasets}

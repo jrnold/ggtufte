@@ -28,18 +28,131 @@ options(htmltools.dir.version = FALSE)
 ```{r}
 library("ggplot2")
 library("ggtufte")
-extrafont::loadfonts()
+library("scales")
+extrafont::loadfonts(quiet = TRUE)
+
 ```
 
-## Minimal Bar Plot
+## Scatter plots
 
+```{r}
+p <- ggplot(mtcars, aes(wt, mpg)) + geom_point() 
+```
 
+```{r}
+p + theme_bw()
+```
 
-## Minimal Scatterplot with Range-Frame
+The **ggplot2** theme provided with this package, `theme_tufte`, removes most of the
+ink from the plot. There are no grid-lines and no borders or axis.
+```{r}
+p + theme_tufte() 
+```
 
+Instead of using axis lines the ink-to-data ratio can be improved by using the axis lines
+to encode the range of the data.
+The `geom_rangeframe()` will add lines representing the range of the data along the axes.
+```{r}
+p + theme_tufte() +
+  geom_rangeframe()
+```
+
+However, the axis breaks do not match up with the range. 
+It would be more informative to label the minimum and maximum values of breaks.
+```{r}
+p + theme_tufte() +
+  geom_rangeframe() +
+  scale_y_continuous(breaks = range_breaks(),
+                     label = format_format(digits = 1)) +
+  scale_x_continuous(breaks = range_breaks(),
+                     label = format_format(digits = 1))
+```
+
+```{r}
+p + theme_tufte() +
+  geom_rangeframe() +
+  scale_y_continuous(breaks = range_breaks()(mtcars$mpg),
+                     labels = format_format(digits = 1)) +
+  scale_x_continuous(breaks = range_breaks()(mtcars$wt),
+                     labels = format_format(digits = 1))
+```
+
+```{r}
+p + theme_tufte(ticks = FALSE) +
+  geom_rug() +
+  scale_y_continuous(breaks = range_breaks()(mtcars$mpg),
+                     labels = format_format(digits = 1)) +
+  scale_x_continuous(breaks = range_breaks()(mtcars$wt),
+                     labels = format_format(digits = 1))
+```
+
+## Quartile Plots
+
+```{r}
+p <- ggplot(mpg, aes(class, hwy)) +
+  theme(axis.ticks.x = element_blank())
+```
+
+Tufte Ch. 6 proposes several redesigns of the venerable box plot.
+Unlike the Tukey's boxplot, these box plots, display the five-number summary
+(median, 25% quartile, 75% quartile, maximum, minimum), instead of the 
+stats and outliers calculated in Tukey's boxplot.
+
+This displays the standard box plot in **ggplot2**.
+```{r}
+p + geom_boxplot(stat = StatFivenumber)
+```
+I use the `StatFivenumber` stat to calculate the fiver-number summary rather
+than the summary used in the boxplot.
+
+@Tufte calls his redesign a *quartile-plot*. 
+The function `geom_quartileplot()` implements these.
+
+The first redesign erases the box from the boxplot.
+The whiskers remain, negative space represents the interquartile and a point represents the median.
+```{r}
+p + geom_quartileplot()
+```
+
+A second alternative is to invert the first.
+Points are used to represent the minimum and maximum, a line for the interquartile
+range, and a gap in the line to represent the median.
+```{r}
+p + geom_quartileplot(whisker.line = FALSE, middle.line = TRUE)
+```
+
+A third alternative is to use a line to represent the range, and a gap to 
+represent the median.
+The interquartile range is represented by a thicker section of line.
+```{r}
+p + geom_quartileplot(whisker.line = TRUE, middle.line = TRUE,
+                      hoffset = 0, fatten = 2)
+```
+
+A fourth alternative uses lines for the upper and lower whiskers.
+The interquartile range is represented by a line offset from the first.
+The median is still represented by a gap.
+```{r}
+p + geom_quartileplot(whisker.line = TRUE, middle.line = TRUE)
+```
+
+## Theme
+
+```{r}
+p <- ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(cyl))) +
+  geom_point() + 
+  facet_wrap(~ am) +
+  labs(title = "Title", subtitle = "Subtitle", caption = "Caption")
+p + theme_tufte()
+```
+
+```{r}
+p + theme_tufte(sans_title = TRUE)
+```
 
 
 ## Typography
+
 
 
 ## References

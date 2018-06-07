@@ -18,10 +18,11 @@ Imports:
     ggplot2 (>= 2.2.1),
     extrafont
 Suggests:
-    spelling,
     tufte,
     knitr,
     rmarkdown,
+    scales,
+    spelling,
     testthat,
     covr
 Authors@R: c(person("Jeffrey", "Arnold", role = c("aut", "cre"), email = "jeffrey.arnold@gmail.com",

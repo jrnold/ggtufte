@@ -21,6 +21,10 @@ ET Book (ETBembo font-family) comprises five fonts:
 \item \code{"ETBembo BoldLF"}: Bold (lining figures)
 \item \code{"ETBembo DisplayItalic"}: Display Italic (oldstyle figures)
 }
+
+For headings, the sans serif font, Gill Sans is used.
+Since there is no Gill Sans variant with an open license, the similar
+Lato font is included with this package.
 }
 \examples{
 font_et

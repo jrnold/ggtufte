@@ -4,8 +4,8 @@ extrafont::loadfonts()
 
 p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point() +
-  scale_x_continuous(breaks = extended_range_breaks()(mtcars$wt)) +
-  scale_y_continuous(breaks = extended_range_breaks()(mtcars$mpg)) +
+  scale_x_continuous(breaks = pretty_range_breaks(mtcars$wt, 5)) +
+  scale_y_continuous(breaks = pretty_range_breaks(mtcars$mpg, 5)) +
   ggtitle("Cars")
 
 p + geom_rangeframe() +

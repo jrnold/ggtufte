@@ -2,33 +2,21 @@
 % Please edit documentation in R/tufte.R
 \name{theme_tufte}
 \alias{theme_tufte}
-\title{Tufte Maximal Data, Minimal Ink Theme}
+\title{Tufte's Maximal Data, Minimal Ink Theme}
 \usage{
-theme_tufte(base_size = 11,
-  base_family = extrafont::choose_font(ggtufte::tufte_theme_fonts),
-  ticks = TRUE)
+theme_tufte(base_size = 11, ticks = TRUE)
 }
 \arguments{
 \item{base_size}{base font size}
-
-\item{base_family}{base font family}
 
 \item{ticks}{\code{logical} Show axis ticks?}
 }
 \description{
 Theme based on Chapter 6 'Data-Ink Maximization and Graphical
-Design' of Edward Tufte *The Visual Display of Quantitative
-Information*. No border, no axis lines, no grids. This theme works
-best in combination with \code{\link{geom_rug}} or
+Design' of Tufte \emph{The Visual Display of Quantitative Information}.
+No border, no axis lines, no grids. This theme works
+well in combination with \code{\link{geom_rug}} or
 \code{\link{geom_rangeframe}}.
-}
-\note{
-The default font family is set to 'serif' as he uses serif fonts
-for labels in 'The Visual Display of Quantitative Information'.
-The serif font used by Tufte in his books is a variant of Bembo,
-while the sans serif font is Gill Sans. If these fonts are
-installed on your system, then you can use them with the package
-\bold{extrafont}.
 }
 \examples{
 library("ggplot2")
@@ -37,8 +25,8 @@ extrafont::loadfonts()
 
 p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point() +
-  scale_x_continuous(breaks = extended_range_breaks()(mtcars$wt)) +
-  scale_y_continuous(breaks = extended_range_breaks()(mtcars$mpg)) +
+  scale_x_continuous(breaks = pretty_range_breaks(mtcars$wt, 5)) +
+  scale_y_continuous(breaks = pretty_range_breaks(mtcars$mpg, 5)) +
   ggtitle("Cars")
 
 p + geom_rangeframe() +

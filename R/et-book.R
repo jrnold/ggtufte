@@ -15,7 +15,7 @@
 #' @references <https://edwardtufte.github.io/et-book/>
 #' @source <https://github.com/edwardtufte/et-book>
 #' @export
-import_et_book <- function() {
+import_ggtufte_fonts <- function() {
   # function adapted from hbrthemes::import_roboto_condensed
   font_dir <- system.file("fonts", package = "ggtufte")
 
@@ -41,6 +41,10 @@ import_et_book <- function() {
 #' - `"ETBembo BoldLF"`: Bold (lining figures)
 #' - `"ETBembo DisplayItalic"`: Display Italic (oldstyle figures)
 #'
+#' For headings, the sans serif font, Gill Sans is used.
+#' Since there is no Gill Sans variant with an open license, the similar
+#' Lato font is included with this package.
+#'
 #' @md
 #' @title ET Book fonts R variable aliases
 #' @format length 5 character vector. Values are the
@@ -54,3 +58,30 @@ font_et <- c("Roman (line figures)" = "ETBembo RomanLF",
              "Bold (line figures)" = "ETBembo BoldLF",
              "Semi-bold (old-style figures)" = "ETBembo SemiBoldOSF",
              "Display italic" = "ETBembo DisplayItalic")
+
+# choose
+get_etbembo <- function(italic = FALSE) {
+  fonttable <- extrafont::fonttable()
+  if (italic) {
+    if ("ETBembo DisplayItalic" %in% fonttable[["FullName"]]) {
+      return("ETBembo DisplayItalic")
+    }
+  } else {
+    if ("ETBembo RomanLF" %in% fonttable[["FullName"]]) {
+      return("ETBembo RomanLF")
+    }
+  }
+  "Palatino"
+}
+
+# Gill Sans type font
+get_gill_sans <- function() {
+  fallbacks <- c("Gill Sans Nova", "Gill Sans MT", "Gill Sans Std",
+                 "Lato", "sans")
+  fontlist <- extrafont::fonts()
+  for (font in fallbacks) {
+    if (font %in% fontlist) {
+      return(font)
+    }
+  }
+}
