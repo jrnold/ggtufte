@@ -36,7 +36,8 @@ extrafont::loadfonts(quiet = TRUE)
 ## Scatter plots
 
 ```{r}
-p <- ggplot(mtcars, aes(wt, mpg)) + geom_point() 
+p <- ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() 
 ```
 
 ```{r}
@@ -63,9 +64,9 @@ It would be more informative to label the minimum and maximum values of breaks.
 p + theme_tufte() +
   geom_rangeframe() +
   scale_y_continuous(breaks = range_breaks(),
-                     label = format_format(digits = 1)) +
+                     labels = format_format(digits = 1)) +
   scale_x_continuous(breaks = range_breaks(),
-                     label = format_format(digits = 1))
+                     labels = format_format(digits = 1))
 ```
 
 ```{r}
